@@ -43,16 +43,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'file',
-        query: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
-      },
+        loader: 'style-loader!css-loader',
+        exclude: /node_modules/
+},
+{
+  test: /\.(woff|svg|eot|ttf)\??.*$/,
+  loader: 'url-loader'
+},
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
