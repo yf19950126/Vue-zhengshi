@@ -6,7 +6,7 @@
           <el-menu :default-openeds="['1', '7']">
             <router-link to="/home">
               <el-menu-item index="1">
-                <template slot="title"><i class="fa fa-home"></i>首页</template>
+                <template slot="title">首页</template>
               </el-menu-item>
             </router-link>
             <el-submenu index="2">
@@ -50,7 +50,7 @@
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="6">
-              <template slot="title"><i class="fa fa-user-o"></i>员工管理</template>
+              <template slot="title"><i class="el-icon-printer"></i>员工管理</template>
               <el-menu-item-group>
                 <router-link to="/staff">
                   <el-menu-item index="6-1">员工基本信息</el-menu-item>
