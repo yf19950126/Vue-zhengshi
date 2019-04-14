@@ -42,15 +42,6 @@ module.exports = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader',
-        exclude: /node_modules/
-},
-{
-  test: /\.(woff|svg|eot|ttf)\??.*$/,
-  loader: 'url-loader'
-},
-      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
@@ -69,10 +60,10 @@ module.exports = {
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
-        // options: {
-        //   limit: 10000,
-        //   name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        // }
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+        }
       }
     ]
   },
