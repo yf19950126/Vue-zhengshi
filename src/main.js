@@ -5,9 +5,8 @@ import App from './App'
 // import $ from 'jquery'
 
 //引入element-ui组件库
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 //创建一个日期过滤器,全局使用
 Vue.filter('formatDate',function (old) {
   function fillZero(value) {
@@ -24,7 +23,8 @@ Vue.filter('formatDate',function (old) {
 })
 import axios from "axios"
 import router from './router'
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.use(ElementUI);
 Vue.prototype.$http= axios
 /* eslint-disable no-new */
 new Vue({
