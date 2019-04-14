@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 //引入font-awesome字体图标库
-import 'font-awesome/css/font-awesome.css'
+import '@/assets/font-awesome-4.7.0/css/font-awesome.css'
 // import $ from 'jquery'
 
 //引入element-ui组件库
