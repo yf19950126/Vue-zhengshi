@@ -21,6 +21,12 @@ export default {
   top:0;
   left: 0;
 }
+.container{
+width:100%;
+position:absolute;
+top:60px;
+left:0
+}
 @media screen and (max-width:480px){
   /*.ads {*/
     /*display:none;*/

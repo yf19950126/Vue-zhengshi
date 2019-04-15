@@ -1,16 +1,16 @@
 <template>
   <div class="content">
     <el-container style="height: 650px; border: 1px solid #eee;">
-      <transition name="in" mode="out-in">
+     <transition name="in" mode="out-in">
         <el-aside width="200px" class="ads" v-show="show">
           <el-menu :default-openeds="['1', '7']">
             <router-link to="/home">
               <el-menu-item index="1">
-                <template slot="title">首页</template>
+                <template slot="title"><i class="el-icon-menu"></i>首页</template>
               </el-menu-item>
             </router-link>
             <el-submenu index="2">
-              <template slot="title"><i class="el-icon-menu"></i>生产管理</template>
+              <template slot="title"><i class="el-icon-sold-out"></i>生产管理</template>
               <el-menu-item-group>
                   <el-menu-item index="2-1" @click="showMenu">
                     <template slot="title">生产信息</template>
@@ -50,7 +50,7 @@
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="6">
-              <template slot="title"><i class="el-icon-printer"></i>员工管理</template>
+              <template slot="title"><i class="el-icon-info"></i>员工管理</template>
               <el-menu-item-group>
                 <router-link to="/staff">
                   <el-menu-item index="6-1">员工基本信息</el-menu-item>
@@ -62,15 +62,15 @@
             </el-submenu>
           </el-menu>
         </el-aside>
-      </transition>
+        </transition>
       <el-container>
         <el-header style="width:100%;text-align: right;font-size: 16px;">
-          <i @click="click" class="el-icon-menu menu"></i>
+          <i @click="click" class="el-icon-more more"></i>
           <span>{{name}}</span>
           <span style="cursor: pointer;color: cornflowerblue" @click="logOut">退出</span>
         </el-header>
 
-        <el-main class="readme-container">
+        <el-main class="readme-container container">
           <h2 class="title" style="text-align: center;">欢迎来到山西正势集团</h2>
           <div class="img">
             <img style="width: 100%;height: 100%;" src="../assets/img/logo.jpg" alt="">
@@ -148,7 +148,7 @@
 </script>
 
 <style scoped>
-  .menu{
+  .more{
     float: left;
     margin-top: 20px;
     font-size: 20px;
@@ -156,7 +156,6 @@
   }
   .readme-container{
     width: 100%;
-    background: #eef1f6;
     padding: 20px;
   }
   .img{

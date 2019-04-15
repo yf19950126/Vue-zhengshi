@@ -6,11 +6,11 @@
           <el-menu :default-openeds="['1', '7']">
             <router-link to="/home">
               <el-menu-item index="1">
-                <template slot="title"><i class="fa fa-home"></i>首页</template>
+               <template slot="title"><i class="el-icon-menu"></i>首页</template>
               </el-menu-item>
             </router-link>
             <el-submenu index="2">
-              <template slot="title"><i class="el-icon-menu"></i>生产管理</template>
+               <template slot="title"><i class="el-icon-sold-out"></i>生产管理</template>
               <el-menu-item-group>
                   <el-menu-item index="2-1" @click="showMenu">
                     <template slot="title">生产信息</template>
@@ -50,7 +50,7 @@
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="6">
-              <template slot="title"><i class="fa fa-user-o"></i>员工管理</template>
+             <template slot="title"><i class="el-icon-info"></i>员工管理</template>
               <el-menu-item-group>
                 <router-link to="/staff">
                   <el-menu-item index="6-1">员工基本信息</el-menu-item>
@@ -66,7 +66,7 @@
 
       <el-container>
         <el-header style="width: 100%;text-align: right;font-size: 16px;">
-          <i @click="click" class="el-icon-menu menu" style="float: left;margin-top: 20px;font-size: 20px;cursor: pointer"></i>
+          <i @click="click" class="el-icon-more more" style="float: left;margin-top: 20px;font-size: 20px;cursor: pointer"></i>
           <span>{{username}}</span>
           <span style="cursor: pointer;color: cornflowerblue" @click="logOut">退出</span>
         </el-header>
