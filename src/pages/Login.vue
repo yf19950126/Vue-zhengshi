@@ -7,7 +7,7 @@
           正势集团
         </div>
         <div class="userLogin">欢迎登录正势集团</div>
-      <div style="margin-top: 50px">
+      <div style="margin-left:-4%;margin-top:50px;">
         <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
           <el-form-item label="姓名" prop="name" style="width: 330px;margin: 20px auto">
             <el-input type="name" v-model="ruleForm2.name" autocomplete="off" placeholder="请输入姓名"></el-input>
@@ -24,6 +24,10 @@
       <div class="footer">
         <p>@版权所有 |  正势集团  |  纪律检查小组</p>
         <p>HTTPS证书验证电话：13934870011</p>
+        <div style="width:300px;margin:0 auto; padding:20px 0;">
+          <img src="../../static/备案图标.png"></img>
+          <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14080202000329" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">晋公网安备 14080202000329号</p></a>
+		 	  </div>
       </div>
     </div>
 </template>
@@ -124,7 +128,7 @@
     font-size: 30px;
     text-align: center;
     line-height: 100px;
-    margin-left: 25%;
+    margin:0 auto;
     font-weight: bold;
   }
   .userLogin{
@@ -136,8 +140,8 @@
     margin-top: 30px;
   }
   .footer{
-      text-align: center;
-    margin-top: 168px;
+    text-align: center;
+    margin-top: 100px;
     color: gray;
   }
 </style>
