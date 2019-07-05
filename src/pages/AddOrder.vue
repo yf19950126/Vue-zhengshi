@@ -91,7 +91,7 @@
               <el-form-item label="电机型号" prop="motorId">
                 <el-input v-model="ruleForm2.motorId" placeholder="请输入电机型号"></el-input>
               </el-form-item>
-              <el-form-item label="维修原因" prop="reason">
+              <el-form-item label="维修内容" prop="reason">
                 <el-input v-model="ruleForm2.reason" placeholder="请输入维修原因"></el-input>
               </el-form-item>
               <el-form-item label="维修数量" prop="number">
@@ -106,6 +106,9 @@
                     :value="item.value">
                   </el-option>
                 </el-select>
+              </el-form-item>
+              <el-form-item label="发货时间" prop="SendDate">
+                <el-input  v-model="ruleForm2.SendDate" autocomplete="off" placeholder="请输入发货时间"></el-input>
               </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
@@ -149,7 +152,8 @@
           motorId:'',
           reason:'',
           number:'',
-          status:''
+          status:'',
+          SendDate:''
         },
         rules2: {
           orderId: [
@@ -172,6 +176,9 @@
           ],
           status: [
             { required: true, message: '请选择维修状态', trigger: 'blur' },
+          ],
+          SendDate:[
+            {message:'请填写时间',trigger:'blur'}
           ],
         }
       }
