@@ -102,33 +102,43 @@
               </el-table-column>
               <el-table-column
                 prop="motorAddress"
-                label="使用车间"
+                label="工具及材料"
                 >
                 <template slot-scope="scope">
                   {{scope.row.motorAddress}}
                 </template>
               </el-table-column>
-              <el-table-column
-                prop="motorMoney"
-                label="配件报价"
-              >
-                <template slot-scope="scope">
-                  {{scope.row.motorMoney}}
-                </template>
-              </el-table-column>
-              <el-table-column
+               <el-table-column
                 prop="motorNumber"
-                label="配件数量"
+                label="数量"
               >
                 <template slot-scope="scope">
                   {{scope.row.motorNumber}}
                 </template>
               </el-table-column>
-              <el-table-column label="配件总额">
+              <el-table-column
+                prop="motorMoney"
+                label="用途"
+              >
                 <template slot-scope="scope">
-                  {{scope.row.motorMoney * scope.row.motorNumber}}
+                  {{scope.row.motorMoney}}
                 </template>
               </el-table-column>
+              <el-table-column label="归还时间">
+                <template slot-scope="scope">
+                    {{scope.row.time}}
+                  </template>
+              </el-table-column>
+              <el-table-column label="备注">
+                <template slot-scope="scope">
+                    {{scope.row.remarks}}
+                  </template>
+              </el-table-column>
+              <el-table-column label="操作">
+                <template slot-scope="scope">
+                   <el-button type="primary" size="small" @click="isChange(scope.row)">修改</el-button>
+                  </template>
+                </el-table-column>
             </el-table>
             <el-button style="float: right;margin-right: 5%;margin-top: 10px"
                        type="primary" icon="el-icon-edit" @click="open"
@@ -148,20 +158,61 @@
               <el-form-item label="电机配件" prop="motorName">
                 <el-input v-model="addForm.motorName" placeholder="请输入电机配件"></el-input>
               </el-form-item>
-              <el-form-item label="使用车间" prop="motorAddress">
-                <el-input v-model="addForm.motorAddress" placeholder="请输入使用车间"></el-input>
+              <el-form-item label="工具材料" prop="motorAddress">
+                <el-input v-model="addForm.motorAddress" placeholder="请输入使用的工具或材料"></el-input>
               </el-form-item>
-              <el-form-item label="配件报价" prop="motorMoney" >
-                <el-input  v-model="addForm.motorMoney" autocomplete="off" placeholder="请输入配件报价"></el-input>
+              <el-form-item label="数量" prop="motorNumber" >
+                <el-input  v-model="addForm.motorNumber" autocomplete="off" placeholder="请输入数量"></el-input>
               </el-form-item>
-              <el-form-item label="配件数量" prop="motorNumber">
-                <el-input v-model="addForm.motorNumber" placeholder="请输入配件数量"></el-input>
+              <el-form-item label="用途" prop="motorMoney">
+                <el-input v-model="addForm.motorMoney" placeholder="请输入用途"></el-input>
+              </el-form-item>
+              <el-form-item label="归还时间" prop="time">
+                <el-input v-model="addForm.time" placeholder="请输入归还时间"></el-input>
+              </el-form-item>
+              <el-form-item label="备注" prop="remarks">
+                <el-input v-model="addForm.remarks" placeholder="请输入备注"></el-input>
               </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="submitForm('addForm')">提交</el-button>
               </el-form-item>
             </el-form>
           </el-dialog>
+           <el-dialog title="修改出库信息" :visible.sync="editDialog" @close="resetForm('editForm')">
+              <el-form :model="editForm" :rules="rules3" ref="editForm" label-width="80px">
+                 <el-form-item label="使用日期" prop="date">
+                <el-date-picker style="width: 100%;"
+                                v-model="editForm.date"
+                                type="datetime"
+                                placeholder="选择日期时间"  :disabled="true">
+                </el-date-picker>
+              </el-form-item>
+                <el-form-item label="使用人员" prop="people">
+                  <el-input type="text" v-model="editForm.people" :disabled="true"></el-input>
+                </el-form-item>
+                <el-form-item label="电机配件" prop="motorName">
+                  <el-input type="text" v-model="editForm.motorName" :disabled="true"></el-input>
+                </el-form-item>
+                <el-form-item label="工具材料" prop="motorAddress">
+                  <el-input type="text" v-model="editForm.motorAddress" :disabled="true"></el-input>
+                </el-form-item>
+                <el-form-item label="数量" prop="motorNumber">
+                  <el-input type="text" v-model="editForm.motorNumber" :disabled="true"></el-input>
+                </el-form-item>
+                <el-form-item label="用途" prop="motorMoney">
+                  <el-input type="text" v-model="editForm.motorMoney" :disabled="true"></el-input>
+                </el-form-item>
+                <el-form-item label="归还时间" prop="time">
+                  <el-input type="text" v-model="editForm.time"></el-input>
+                </el-form-item>
+                <el-form-item label="备注" prop="remarks">
+                  <el-input type="text" v-model="editForm.remarks" ></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="updateOut">修改</el-button>
+                </el-form-item>
+              </el-form>
+            </el-dialog>
         </el-main>
         <el-row type="flex" justify="end" style="clear: both">
           <el-pagination background layout="total,prev, pager, next" :total="total" :page-size="5" @current-change="pageChange" ></el-pagination>
@@ -204,7 +255,9 @@
           motorName:'',
           motorAddress:'',
           motorMoney:'',
-          motorNumber:''
+          motorNumber:'',
+          time:'',
+          remarks:''
         },
         addDialog:false,
         rules2: {
@@ -215,18 +268,49 @@
             { required: true, message: '请输入使用人员', trigger: 'blur' },
           ],
           motorName: [
-            { required: true, message: '请输入电机配件', trigger: 'blur' },
+            { message: '请输入电机配件', trigger: 'blur' },
           ],
           motorAddress: [
-            { required: true, message: '请输入使用车间', trigger: 'blur' },
+            { message: '请输入工具及材料', trigger: 'blur' },
           ],
           motorMoney: [
-            { required: true, message: '请输入配件报价', trigger: 'blur' },
+            { required: true, message: '请输入数量', trigger: 'blur' },
           ],
           motorNumber: [
-            { required: true, message: '请输入配件数量', trigger: 'blur' },
+            { required: true, message: '请输入用途', trigger: 'blur' },
+          ],
+          time: [
+            { message: '请输入归还时间', trigger: 'blur' },
+          ],
+          remarks: [
+            {message: '请输入备注', trigger: 'blur' },
           ],
         },
+        ruleForm2: {
+          time:"",
+          remarks:'',
+        },
+        //用于修改用户的对象
+        editForm:{
+          "date":'',
+          "people":'',
+          "motorName":'',
+          "motorAddress":'',
+          "motorNumber":'',
+          "motorMoney":'',
+          "time":'',
+          "remarks":''
+        },
+        //编辑的对话框
+        editDialog:false,
+        rules3: {
+          time: [
+            {message: '请填写g归还时间', trigger: 'blur' },
+          ],
+          remarks: [
+            {message: '请填写备注', trigger: 'blur' },
+          ],
+        }
       }
     },
     methods:{
@@ -284,6 +368,40 @@
           }else{
             return false
           }
+        })
+      },
+       resetForm:function(formName){
+        if(formName === 'editForm'){
+          //编辑的弹出框关掉
+          this.editDialog = false;
+        }
+        //将弹出框里面的内容清空
+        this.$refs[formName].resetFields();
+      },
+      isChange:function(row){
+        //编辑的弹出框开启
+        this.editDialog = true;
+        //可以使用row里面的数据，将整行的用户信息输出
+        this.editForm.date = row.date;
+        this.editForm.people = row.people;
+        this.editForm.motorName = row.motorName;
+        this.editForm.motorAddress = row.motorAddress;
+        this.editForm.motorNumber = row.motorNumber;
+        this.editForm.motorMoney = row.motorMoney;
+        this.editForm.time = row.time;
+        this.editForm.remarks = row.remarks;
+      },
+      updateOut:function(){
+        axios.post('/users/updateOut',this.editForm)
+          .then(response=>{
+            var res = response.data;
+            if(res.status === '0'){
+              this.resetForm('editForm');
+              this.$message.success('修改成功');
+              this.getData();
+            }
+          }).catch(err=>{
+          console.log(err);
         })
       },
       getData(page) {
