@@ -27,5 +27,11 @@ var OutputMachineSchema = new Schema({
   motorNumber:{
     type:String,
   },
+  time:{
+    type:String,
+  },
+  remarks:{
+    type:String,
+  },
 })
 module.exports = mongoose.model('OutputMachine',OutputMachineSchema)
