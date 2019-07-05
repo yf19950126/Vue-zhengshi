@@ -1,6 +1,6 @@
 //连接MongoDB数据库
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1:27017/Zhengshi');
+mongoose.connect('mongodb://62.234.45.32/Zhengshi');
 
 mongoose.connection.on("connected", function () {
   console.log("MongoDB connected success.")
