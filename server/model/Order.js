@@ -30,5 +30,8 @@ var OrderSchema = new Schema({
   status:{
     type:String,
   },
+  SendDate:{
+    type:String,
+  },
 })
 module.exports = mongoose.model('Order',OrderSchema)
