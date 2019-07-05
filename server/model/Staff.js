@@ -23,6 +23,9 @@ var StaffSchema = new Schema({
   date:{
     type:Date,
     default: Date.now
+  },
+  time:{
+    type:String,
   }
 })
 module.exports = mongoose.model('Staff',StaffSchema)
