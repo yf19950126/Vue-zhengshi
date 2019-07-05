@@ -102,7 +102,7 @@
                       {{scope.row.motorId}}
                     </template>
                   </el-table-column>
-                  <el-table-column label="维修原因">
+                  <el-table-column label="维修内容">
                     <template slot-scope="scope">
                       {{scope.row.reason}}
                     </template>
@@ -117,6 +117,11 @@
                       <el-button type="primary" size="small" @click="isChange(scope.row)">
                          {{scope.row.status}}
                       </el-button>
+                    </template>
+                  </el-table-column>
+                  <el-table-column label="发货日期">
+                    <template slot-scope="scope">
+                      {{scope.row.SendDate}}
                     </template>
                   </el-table-column>
                 </el-table>
@@ -135,7 +140,7 @@
                 <el-form-item label="电机型号" prop="phone">
                   <el-input type="text" v-model="editForm.motorId" :disabled="true"></el-input>
                 </el-form-item>
-                <el-form-item label="维修原因" prop="email">
+                <el-form-item label="维修内容" prop="email">
                   <el-input type="text" v-model="editForm.reason" :disabled="true"></el-input>
                 </el-form-item>
                 <el-form-item label="维修数量" prop="phone">
@@ -150,6 +155,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
+                </el-form-item>
+                <el-form-item label="发货时间" prop="SendDate">
+                  <el-input type="text" v-model="editForm.SendDate"></el-input>
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary" @click="updateStatus">修改</el-button>
@@ -204,7 +212,8 @@
         }],
         value: '',
         ruleForm2: {
-          status:''
+          status:'',
+          SendDate:''
         },
         //用于修改用户的对象
         editForm:{
@@ -212,13 +221,17 @@
           "motorId":'',
           "reason":'',
           "number":'',
-          "status":''
+          "status":'',
+          "SendDate":''
         },
         //编辑的对话框
         editDialog:false,
         rules2: {
           status: [
             { required: true, message: '请选择维修状态', trigger: 'blur' },
+          ],
+          SendDate: [
+            {message: '请填写发货时间', trigger: 'blur' },
           ],
         }
       }
