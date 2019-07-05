@@ -93,6 +93,9 @@
                                 placeholder="选择日期时间">
                 </el-date-picker>
               </el-form-item>
+              <el-form-item label="离职时间" prop="time">
+                <el-input v-model="ruleForm2.time" placeholder="请输入离职时间"></el-input>
+               </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
                 <el-button @click="resetForm('ruleForm2')">重置</el-button>
@@ -128,7 +131,8 @@
           position:'',
           number:'',
           address:'',
-          date:''
+          date:'',
+          time:''
         },
         rules2: {
           name: [
@@ -146,6 +150,9 @@
           ],
           date:[
             {type:'date',required:true,message:'请填写时间',trigger:'blur'}
+          ],
+          time:[
+            {message:'请填写离职时间',trigger:'blur'}
           ],
         }
       }
