@@ -193,11 +193,14 @@
         total:0,
         BusinessList:[],
         options: [{
-          value: '商务出勤',
-          label: '商务出勤'
+          value: '商务出差',
+          label: '商务出差'
         }, {
-          value: '售后出勤',
-          label: '售后出勤'
+          value: '售后出差',
+          label: '售后出差'
+        },{
+          value: '正常出勤',
+          label: '正常出勤'
         }],
         value: '',
         addForm: {
