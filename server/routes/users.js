@@ -219,6 +219,8 @@ router.post('/addOutputMachine',function(req,res,next){
   newOutputMachine.motorAddress = req.body.motorAddress;
   newOutputMachine.motorMoney = req.body.motorMoney;
   newOutputMachine.motorNumber = req.body.motorNumber;
+  newOutputMachine.time = req.body.time;
+  newOutputMachine.remarks = req.body.remarks;
   console.log(req.body);
   newOutputMachine.save().then(data=>{
     return res.json({
@@ -253,6 +255,26 @@ router.get('/outputMachineList',function (req,res) {
     console.log(err)
   })
 })
+// 修改出库配件信息
+router.post('/updateOut',function(req,res,next){
+  OutputMachine.findOne({'date':req.body.date,'people':req.body.people,'motorName':req.body.motorName,
+    'motorAddress':req.body.motorAddress,'motorMoney':req.body.motorMoney,'motorNumber':req.body.motorNumber}).then(outputmMachine=>{
+      outputmMachine.time = req.body.time;
+      outputmMachine.remarks = req.body.remarks;
+      outputmMachine.save().then(data=> {
+      return res.json({
+        status:'0',
+        message:'success'
+      })
+    }).catch(err=>{
+      return res.json({
+        status:'1',
+        message:err
+      });
+    })
+  })
+
+})
 
 //添加订单
 router.post('/addOrder',function(req,res,next){
@@ -264,6 +286,7 @@ router.post('/addOrder',function(req,res,next){
   newOrder.reason = req.body.reason;
   newOrder.number = req.body.number;
   newOrder.status = req.body.status;
+  newOrder.SendDate = req.body.SendDate;
   console.log(req.body);
   newOrder.save().then(data=>{
     return res.json({
@@ -298,6 +321,7 @@ router.post('/updateStatus',function(req,res,next){
   Order.findOne({'companyName':req.body.companyName,'motorID':req.body.motorID,'reason':req.body.reason,
     'number':req.body.number}).then(order=>{
     order.status = req.body.status;
+    order.SendDate = req.body.SendDate;
     order.save().then(data=> {
       return res.json({
         status:'0',
@@ -321,6 +345,7 @@ router.post('/register',function(req,res,next){
   newStaff.address = req.body.address;
   newStaff.position = req.body.position;
   newStaff.date = req.body.date;
+  newStaff.time = req.body.time;
   console.log(req.body);
   //判断一下如果，数据库单中存在相同的username,让用户重新填写
   Staff.findOne({'name':req.body.name},function(err,staff){
@@ -364,5 +389,27 @@ router.get('/list',function (req,res) {
   }).catch(err=>{
     console.log(err)
   })
+})
+
+// 修改员工信息
+router.post('/updateMessage',function(req,res,next){
+  Staff.findOne({'name':req.body.name}).then(staff=>{
+    staff.number = req.body.number;
+    staff.address = req.body.address;
+    staff.position = req.body.position;
+    staff.time = req.body.time;
+    staff.save().then(data=> {
+      return res.json({
+        status:'0',
+        message:'success'
+      })
+    }).catch(err=>{
+      return res.json({
+        status:'1',
+        message:err
+      });
+    })
+  })
+
 })
 module.exports = router;
