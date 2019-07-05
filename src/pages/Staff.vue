@@ -102,6 +102,16 @@
                     {{scope.row.date | formatDate}}
                   </template>
                 </el-table-column>
+                <el-table-column label="离职时间">
+                  <template slot-scope="scope">
+                    {{scope.row.time}}
+                  </template>
+                </el-table-column>
+                <el-table-column label="操作">
+                <template slot-scope="scope">
+                   <el-button type="primary" size="small" @click="isChange(scope.row)">修改</el-button>
+                  </template>
+                </el-table-column>
               </el-table>
               <router-link to="/register">
                 <el-button style="float: right;margin-right: 5%;margin-top: 10px"
@@ -110,6 +120,36 @@
               </router-link>
             </el-col>
           </el-row>
+          <el-dialog title="修改离职信息" :visible.sync="editDialog" @close="resetForm('editForm')">
+              <el-form :model="editForm" :rules="rules2" ref="editForm" label-width="80px">
+                <el-form-item label="员工姓名" prop="name">
+                  <el-input type="text" v-model="editForm.name" :disabled="true"></el-input>
+                </el-form-item>
+                <el-form-item label="员工电话" prop="phone">
+                  <el-input type="text" v-model="editForm.number" ></el-input>
+                </el-form-item>
+                <el-form-item label="员工地址" prop="email">
+                  <el-input type="text" v-model="editForm.address" ></el-input>
+                </el-form-item>
+                <el-form-item label="员工职位" prop="phone">
+                  <el-input type="text" v-model="editForm.position" ></el-input>
+                </el-form-item>
+                <el-form-item label="入职日期" prop="status">
+                    <el-date-picker
+                                v-model="editForm.date"
+                                type="datetime"
+                                placeholder="选择日期时间" :disabled="true"
+                                style="width:100%">
+                </el-date-picker>
+                </el-form-item>
+                <el-form-item label="离职时间" prop="time">
+                  <el-input type="text" v-model="editForm.time"></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="updateMessage">修改</el-button>
+                </el-form-item>
+              </el-form>
+            </el-dialog>
         </el-main>
         <el-row class="margin30" type="flex" justify="end">
           <el-pagination background layout="total,prev, pager, next" :total="total" :page-size="5" @current-change="pageChange" ></el-pagination>
@@ -141,6 +181,37 @@
         username:"",
         staffList:[],
         total:0,
+        ruleForm2: {
+          name:"",
+          number:'',
+          position:'',
+          time:''
+        },
+        //用于修改用户的对象
+        editForm:{
+          "name":'',
+          "number":'',
+          "address":'',
+          "position":'',
+          "date":'',
+          "time":''
+        },
+        //编辑的对话框
+        editDialog:false,
+        rules2: {
+          number: [
+            {message: '请填写手机号码', trigger: 'blur' },
+          ],
+          address: [
+            {message: '请填写地址', trigger: 'blur' },
+          ],
+          position: [
+            {message: '请填写职位', trigger: 'blur' },
+          ],
+          time: [
+            {message: '请填写离职时间', trigger: 'blur' },
+          ],
+        }
       }
     },
     methods:{
@@ -165,6 +236,38 @@
         }else{
           alert('不好意思。您无权查看当前页面')
         }
+      },
+      resetForm:function(formName){
+        if(formName === 'editForm'){
+          //编辑的弹出框关掉
+          this.editDialog = false;
+        }
+        //将弹出框里面的内容清空
+        this.$refs[formName].resetFields();
+      },
+      isChange:function(row){
+        //编辑的弹出框开启
+        this.editDialog = true;
+        //可以使用row里面的数据，将整行的用户信息输出
+        this.editForm.name = row.name;
+        this.editForm.number = row.number;
+        this.editForm.address = row.address;
+        this.editForm.position = row.position;
+        this.editForm.date = row.date;
+        this.editForm.time = row.time;
+      },
+      updateMessage:function(){
+        axios.post('/users/updateMessage',this.editForm)
+          .then(response=>{
+            var res = response.data;
+            if(res.status === '0'){
+              this.resetForm('editForm');
+              this.$message.success('修改成功');
+              this.getData();
+            }
+          }).catch(err=>{
+          console.log(err);
+        })
       },
       getData:function (page) {
         axios.get('/users/list',{
@@ -204,6 +307,10 @@
 </script>
 
 <style scoped>
+ .el-container /deep/ .el-dialog {
+    width: 70%;
+    margin: 0 auto;
+  }
   .in-enter{
     transform: translateX(-30%);
   }
