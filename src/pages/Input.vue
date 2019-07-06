@@ -94,14 +94,14 @@
                     {{scope.row.motorName}}
                   </template>
                 </el-table-column>
-                <el-table-column prop="motorAddress" label="供货单位">
-                  <template slot-scope="scope">
-                    {{scope.row.motorAddress}}
-                  </template>
-                </el-table-column>
                 <el-table-column  prop="motorWork" label="工具及材料">
                   <template slot-scope="scope">
                     {{scope.row.motorWork}}
+                  </template>
+                </el-table-column>
+                <el-table-column prop="motorAddress" label="供货单位">
+                  <template slot-scope="scope">
+                    {{scope.row.motorAddress}}
                   </template>
                 </el-table-column>
                 <el-table-column prop="motorMoney" label="单价">
