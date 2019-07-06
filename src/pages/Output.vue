@@ -143,7 +143,7 @@
             <el-button style="float: right;margin-right: 5%;margin-top: 10px"
                        type="primary" icon="el-icon-edit" @click="open"
             >使用配件</el-button>
-          <el-dialog title="添加出库配件" :visible.sync="addDialog" @close="resetForm('addForm')">
+          <el-dialog title="添加出库配件" :visible.sync="addDialog" @close="resetForm1('addForm')">
             <el-form :model="addForm" :rules="rules2" ref="addForm" label-width="80px">
               <el-form-item label="使用日期" prop="date">
                 <el-date-picker style="width: 100%;"
@@ -339,7 +339,7 @@
       open:function(){
         this.addDialog = true;
       },
-      resetForm:function(formName){
+      resetForm1:function(formName){
         if(formName === 'addForm'){
           this.addDialog = false;
         }
@@ -355,7 +355,7 @@
                 if(res.status === '0'){
                   //显示成功的消息提示
                   this.$message.success('添加成功');
-                  this.resetForm('addForm');
+                  this.resetForm1('addForm');
                   //重新获取下最新数据
                   this.getData();
                 }else{
