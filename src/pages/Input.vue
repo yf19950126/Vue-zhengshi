@@ -89,12 +89,12 @@
                     {{scope.row.people}}
                   </template>
                 </el-table-column>
-                <el-table-column prop="motorName" label="电机配件">
+                <el-table-column prop="motorName" label="电机、配件及材料">
                   <template slot-scope="scope">
                     {{scope.row.motorName}}
                   </template>
                 </el-table-column>
-                <el-table-column  prop="motorWork" label="工具及材料">
+                <el-table-column  prop="motorWork" label="工具及设备">
                   <template slot-scope="scope">
                     {{scope.row.motorWork}}
                   </template>
