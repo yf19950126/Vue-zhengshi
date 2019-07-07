@@ -187,7 +187,7 @@
       showMenu:function(){
         // console.log(this.name)
         if(this.name === "李有山"  || this.name === "牛红珍" || this.name === "李国正"
-          || this.name === "陈红喜" || this.name === "裴化民"){
+          || this.name === "陈红喜" || this.name === "裴化民" || this.name === "吕妙玲"){
           this.$router.push({
             path:"/product"
           })
@@ -198,7 +198,7 @@
       showBusiness:function(){
         // console.log(this.name)
         if(this.name === "李有山"  || this.name === "牛红珍" || this.name === "李国正"
-        || this.name === "李有臣" || this.name === "翟海军"){
+        || this.name === "李有臣" || this.name === "翟海军" || this.name === "吕妙玲" || this.name === "牛红军"){
           this.$router.push({
             path:"/business"
           })
