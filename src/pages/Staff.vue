@@ -218,7 +218,7 @@
       showMenu:function(){
         // console.log(this.name)
         if(this.username === "李有山"  || this.username === "牛红珍" || this.username === "李国正"
-          || this.username === "陈红喜" || this.username === "裴化民"){
+          || this.username === "陈红喜" || this.username === "裴化民" || this.name === "吕妙玲"){
           this.$router.push({
             path:"/product"
           })
@@ -229,7 +229,7 @@
       showBusiness:function(){
         // console.log(this.name)
         if(this.username === "李有山"  || this.username === "牛红珍" || this.username === "李国正"
-          || this.username === "李有臣" || this.username === "翟海军"){
+          || this.username === "李有臣" || this.username === "翟海军" || this.name === "吕妙玲" || this.name === "牛红军"){
           this.$router.push({
             path:"/business"
           })
