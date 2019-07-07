@@ -94,7 +94,7 @@
               </el-table-column>
               <el-table-column
                 prop="motorName"
-                label="电机配件"
+                label="电机、配件及材料"
                 width="180">
                 <template slot-scope="scope">
                   {{scope.row.motorName}}
@@ -102,7 +102,7 @@
               </el-table-column>
               <el-table-column
                 prop="motorAddress"
-                label="工具及材料"
+                label="工具及设备"
                 >
                 <template slot-scope="scope">
                   {{scope.row.motorAddress}}
@@ -155,11 +155,11 @@
               <el-form-item label="使用人员" prop="people">
                 <el-input v-model="addForm.people" placeholder="请输入使用人员"></el-input>
               </el-form-item>
-              <el-form-item label="电机配件" prop="motorName">
-                <el-input v-model="addForm.motorName" placeholder="请输入电机配件"></el-input>
+              <el-form-item label="电机、配件及材料" prop="motorName">
+                <el-input v-model="addForm.motorName" placeholder="请输入电机、配件及材料"></el-input>
               </el-form-item>
-              <el-form-item label="工具材料" prop="motorAddress">
-                <el-input v-model="addForm.motorAddress" placeholder="请输入使用的工具或材料"></el-input>
+              <el-form-item label="工具及设备" prop="motorAddress">
+                <el-input v-model="addForm.motorAddress" placeholder="请输入使用的工具或设备"></el-input>
               </el-form-item>
               <el-form-item label="数量" prop="motorNumber" >
                 <el-input  v-model="addForm.motorNumber" autocomplete="off" placeholder="请输入数量"></el-input>
@@ -268,10 +268,10 @@
             { required: true, message: '请输入使用人员', trigger: 'blur' },
           ],
           motorName: [
-            { message: '请输入电机配件', trigger: 'blur' },
+            { message: '请输入电机、配件及材料', trigger: 'blur' },
           ],
           motorAddress: [
-            { message: '请输入工具及材料', trigger: 'blur' },
+            { message: '请输入工具及设备', trigger: 'blur' },
           ],
           motorMoney: [
             { required: true, message: '请输入数量', trigger: 'blur' },
