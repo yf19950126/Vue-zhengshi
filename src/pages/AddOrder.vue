@@ -85,8 +85,8 @@
                                 placeholder="选择日期时间">
                 </el-date-picker>
               </el-form-item>
-              <el-form-item label="公司名称" prop="companyName">
-                <el-input v-model="ruleForm2.companyName" placeholder="请输入公司名称"></el-input>
+              <el-form-item label="客户名称" prop="companyName">
+                <el-input v-model="ruleForm2.companyName" placeholder="请输入客户名称"></el-input>
               </el-form-item>
               <el-form-item label="电机型号" prop="motorId">
                 <el-input v-model="ruleForm2.motorId" placeholder="请输入电机型号"></el-input>
@@ -163,7 +163,7 @@
             {type:'date',required:true,message:'请填写时间',trigger:'blur'}
           ],
           companyName: [
-            { required: true, message: '请输入公司名称', trigger: 'blur' },
+            { required: true, message: '请输入客户名称', trigger: 'blur' },
           ],
           motorId: [
             { required: true, message: '请输入电机型号', trigger: 'blur' },
