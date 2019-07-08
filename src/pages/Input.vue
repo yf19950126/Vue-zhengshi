@@ -136,6 +136,9 @@
               <el-form-item label="工具及设备" prop="motorWork">
                 <el-input  v-model="addForm.motorWork" autocomplete="off" placeholder="请输入工具及设备"></el-input>
               </el-form-item>
+              <el-form-item label="供货单位" prop="motorAddress" >
+                <el-input  v-model="addForm.motorAddress" autocomplete="off" placeholder="请输入供货单位"></el-input>
+              </el-form-item>
               <el-form-item label="单价" prop="motorMoney" >
                 <el-input  v-model="addForm.motorMoney" autocomplete="off" placeholder="请输入电机单价"></el-input>
               </el-form-item>
@@ -199,7 +202,7 @@
             { message: '请输入电机、配件及材料', trigger: 'blur' },
           ],
           motorAddress: [
-            { required: true, message: '请输入供货单位', trigger: 'blur' },
+            { message: '请输入供货单位', trigger: 'blur' },
           ],
           motorWork: [
             {message: '请输入工具及设备', trigger: 'blur' },
