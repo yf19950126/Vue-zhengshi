@@ -210,7 +210,7 @@
             { min: 2, max: 4, message: '长度在 2 到 4 个字符', trigger: 'blur' }
           ],
           phone: [
-            { required: true,message: '请输入正确的手机号', trigger: 'blur', validator: validPhone }//这里需要用到全局变量
+            {message: '请输入正确的手机号', trigger: 'blur', validator: validPhone }//这里需要用到全局变量
           ],
           gain: [
             { required: true, message: '请选择出勤成果', trigger: 'blur' },
