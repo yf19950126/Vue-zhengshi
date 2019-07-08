@@ -92,7 +92,7 @@
                       {{scope.row.date | formatDate}}
                     </template>
                   </el-table-column>
-                  <el-table-column label="公司名称">
+                  <el-table-column label="客户名称">
                     <template slot-scope="scope">
                       {{scope.row.companyName}}
                     </template>
@@ -134,7 +134,7 @@
             </el-row>
             <el-dialog title="修改维修状态" :visible.sync="editDialog" @close="resetForm('editForm')">
               <el-form :model="editForm" :rules="rules2" ref="editForm" label-width="80px">
-                <el-form-item label="公司名称" prop="companyName">
+                <el-form-item label="客户名称" prop="companyName">
                   <el-input type="text" v-model="editForm.companyName" :disabled="true"></el-input>
                 </el-form-item>
                 <el-form-item label="电机型号" prop="phone">
