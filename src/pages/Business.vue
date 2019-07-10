@@ -90,7 +90,7 @@
                     {{scope.row.phone}}
                   </template>
                 </el-table-column>
-                <el-table-column label="公司名称">
+                <el-table-column label="客户名称">
                   <template slot-scope="scope">
                     {{scope.row.companyName}}
                   </template>
@@ -132,8 +132,8 @@
               <el-form-item label="联系方式" prop="phone">
                 <el-input type="text" v-model="addForm.phone" placeholder="请输入手机号"></el-input>
               </el-form-item>
-              <el-form-item label="公司名称" prop="companyName">
-                <el-input type="text" v-model="addForm.companyName" placeholder="请输入公司名称"></el-input>
+              <el-form-item label="客户名称" prop="companyName">
+                <el-input type="text" v-model="addForm.companyName" placeholder="请输入客户名称"></el-input>
               </el-form-item>
               <el-form-item label="出勤成果" prop="gain">
                 <el-input type="text" v-model="addForm.gain" placeholder="请输入出勤成果"></el-input>
@@ -219,7 +219,7 @@
             { required: true,message: '请输入正确的手机号', trigger: 'blur', validator: validPhone }//这里需要用到全局变量
           ],
           companyName: [
-            { required: true, message: '请输入公司名称', trigger: 'blur' },
+            { required: true, message: '请输入客户名称', trigger: 'blur' },
           ],
           gain: [
             { required: true, message: '请选择出勤成果', trigger: 'blur' },
