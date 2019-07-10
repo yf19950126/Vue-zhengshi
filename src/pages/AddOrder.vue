@@ -88,7 +88,7 @@
               <el-form-item label="客户名称" prop="companyName">
                 <el-input v-model="ruleForm2.companyName" placeholder="请输入客户名称"></el-input>
               </el-form-item>
-              <el-form-item label="电机型号" prop="motorId">
+              <el-form-item label="型号、功率、电压" prop="motorId">
                 <el-input v-model="ruleForm2.motorId" placeholder="请输入电机型号"></el-input>
               </el-form-item>
               <el-form-item label="维修内容" prop="reason">
