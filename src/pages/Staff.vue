@@ -28,25 +28,17 @@
             <el-submenu index="4">
               <template slot="title"><i class="el-icon-goods"></i>库房管理</template>
               <el-menu-item-group>
-                <router-link to="/input">
-                  <el-menu-item index="4-1">入库单</el-menu-item>
-                </router-link>
-                <router-link to="/output">
-                  <el-menu-item index="4-2">出库单</el-menu-item>
-                </router-link>
+               <el-menu-item index="4-1" @click="ShowInput">入库单</el-menu-item>
+                  <el-menu-item index="4-2" @click="ShowOut">出库单</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="5">
               <template slot="title"><i class="el-icon-printer"></i>订单管理</template>
-              <el-menu-item-group>
-                <router-link to="/addOrder">
-                  <el-menu-item index="5-1">添加订单</el-menu-item>
-                </router-link>
+             <el-menu-item-group>
+                  <el-menu-item index="5-1" @click="ShowAddOrder">添加订单</el-menu-item>
               </el-menu-item-group>
               <el-menu-item-group>
-                <router-link to="/order">
-                  <el-menu-item index="5-2">所有订单</el-menu-item>
-                </router-link>
+                  <el-menu-item index="5-2" @click="ShowOrder">所有订单</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="6">
@@ -218,7 +210,7 @@
       showMenu:function(){
         // console.log(this.name)
         if(this.username === "李有山"  || this.username === "牛红珍" || this.username === "李国正"
-          || this.username === "陈红喜" || this.username === "裴化民" || this.username === "吕妙玲"){
+          || this.username === "陈红喜" || this.username === "裴化民" || this.name === "吕妙玲"){
           this.$router.push({
             path:"/product"
           })
@@ -229,9 +221,49 @@
       showBusiness:function(){
         // console.log(this.name)
         if(this.username === "李有山"  || this.username === "牛红珍" || this.username === "李国正"
-          || this.username === "李有臣" || this.username === "翟海军" || this.username === "吕妙玲" || this.username === "牛红军"  || this.username === "侯安红"){
+          || this.username === "李有臣" || this.username === "翟海军" || this.name === "吕妙玲" || this.name === "牛红军"){
           this.$router.push({
             path:"/business"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowInput:function(){
+        if(this.username === "李有山"  || this.username === "牛红珍" || this.username === "李国正"
+        || this.username === "吕妙玲" || this.username === "庾未宗"){
+          this.$router.push({
+            path:"/input"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowOut:function(){
+        if(this.username === "李有山"  || this.username === "牛红珍" || this.username === "李国正"
+        || this.username === "吕妙玲" || this.username === "庾未宗"){
+          this.$router.push({
+            path:"/output"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowAddOrder:function(){
+        if(this.username === "李有山"  || this.username === "牛红珍" || this.username === "李国正"
+        || this.username === "吕妙玲"){
+          this.$router.push({
+            path:"/addOrder"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowOrder:function(){
+        if(this.username === "李有山"  || this.username === "牛红珍" || this.username === "李国正"
+        || this.username === "吕妙玲"){
+          this.$router.push({
+            path:"/order"
           })
         }else{
           alert('不好意思。您无权查看当前页面')
