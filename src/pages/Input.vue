@@ -39,14 +39,10 @@
             <el-submenu index="5">
               <template slot="title"><i class="el-icon-printer"></i>订单管理</template>
               <el-menu-item-group>
-                <router-link to="/addOrder">
-                  <el-menu-item index="5-1">添加订单</el-menu-item>
-                </router-link>
+                  <el-menu-item index="5-1" @click="ShowAddOrder">添加订单</el-menu-item>
               </el-menu-item-group>
               <el-menu-item-group>
-                <router-link to="/order">
-                  <el-menu-item index="5-2">所有订单</el-menu-item>
-                </router-link>
+                  <el-menu-item index="5-2" @click="ShowOrder">所有订单</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="6">
@@ -89,12 +85,12 @@
                     {{scope.row.people}}
                   </template>
                 </el-table-column>
-                <el-table-column prop="motorName" label="电机、配件及材料">
+                <el-table-column prop="motorName" label="电机配件">
                   <template slot-scope="scope">
                     {{scope.row.motorName}}
                   </template>
                 </el-table-column>
-                <el-table-column  prop="motorWork" label="工具及设备">
+                <el-table-column  prop="motorWork" label="工具及材料">
                   <template slot-scope="scope">
                     {{scope.row.motorWork}}
                   </template>
@@ -130,14 +126,14 @@
               <el-form-item label="进货人员" prop="people">
                 <el-input v-model="addForm.people" placeholder="请输入进货人员"></el-input>
               </el-form-item>
-              <el-form-item label="电机、配件及材料" prop="motorName">
-                <el-input v-model="addForm.motorName" placeholder="请输入电机、配件及材料"></el-input>
+              <el-form-item label="电机配件" prop="motorName">
+                <el-input v-model="addForm.motorName" placeholder="请输入电机配件"></el-input>
               </el-form-item>
-              <el-form-item label="工具及设备" prop="motorWork">
-                <el-input  v-model="addForm.motorWork" autocomplete="off" placeholder="请输入工具及设备"></el-input>
+              <el-form-item label="供货单位" prop="motorAddress">
+                <el-input v-model="addForm.motorAddress" placeholder="请输入供货单位"></el-input>
               </el-form-item>
-              <el-form-item label="供货单位" prop="motorAddress" >
-                <el-input  v-model="addForm.motorAddress" autocomplete="off" placeholder="请输入供货单位"></el-input>
+              <el-form-item label="工具材料" prop="motorWork">
+                <el-input  v-model="addForm.motorWork" autocomplete="off" placeholder="请输入工具材料"></el-input>
               </el-form-item>
               <el-form-item label="单价" prop="motorMoney" >
                 <el-input  v-model="addForm.motorMoney" autocomplete="off" placeholder="请输入电机单价"></el-input>
@@ -199,13 +195,13 @@
             { min: 2, max: 4, message: '长度在 2 到 4 个字符', trigger: 'blur' }
           ],
           motorName: [
-            { message: '请输入电机、配件及材料', trigger: 'blur' },
+            { message: '请输入电机配件', trigger: 'blur' },
           ],
           motorAddress: [
-            { message: '请输入供货单位', trigger: 'blur' },
+            { required: true, message: '请输入供货单位', trigger: 'blur' },
           ],
           motorWork: [
-            {message: '请输入工具及设备', trigger: 'blur' },
+            {message: '请输入工具及材料', trigger: 'blur' },
           ],
           motorMoney: [
             { required: true, message: '请输入电机单价', trigger: 'blur' },
@@ -234,6 +230,26 @@
           || this.name === "李有臣" || this.name === "翟海军" || this.name === "吕妙玲" || this.name === "牛红军"){
           this.$router.push({
             path:"/business"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowAddOrder:function(){
+        if(this.name === "李有山"  || this.name === "牛红珍" || this.name === "李国正"
+        || this.name === "吕妙玲"){
+          this.$router.push({
+            path:"/addOrder"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowOrder:function(){
+        if(this.name === "李有山"  || this.name === "牛红珍" || this.name === "李国正"
+        || this.name === "吕妙玲"){
+          this.$router.push({
+            path:"/order"
           })
         }else{
           alert('不好意思。您无权查看当前页面')
