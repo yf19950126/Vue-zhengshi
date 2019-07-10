@@ -30,25 +30,17 @@
             <el-submenu index="4">
               <template slot="title"><i class="el-icon-goods"></i>库房管理</template>
               <el-menu-item-group>
-                <router-link to="/input">
-                  <el-menu-item index="4-1">入库单</el-menu-item>
-                </router-link>
-                <router-link to="/output">
-                  <el-menu-item index="4-2">出库单</el-menu-item>
-                </router-link>
+                 <el-menu-item index="4-1" @click="ShowInput">入库单</el-menu-item>
+                  <el-menu-item index="4-2" @click="ShowOut">出库单</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="5">
               <template slot="title"><i class="el-icon-printer"></i>订单管理</template>
               <el-menu-item-group>
-                <router-link to="/addOrder">
-                  <el-menu-item index="5-1">添加订单</el-menu-item>
-                </router-link>
+                  <el-menu-item index="5-1" @click="ShowAddOrder">添加订单</el-menu-item>
               </el-menu-item-group>
               <el-menu-item-group>
-                <router-link to="/order">
-                  <el-menu-item index="5-2">所有订单</el-menu-item>
-                </router-link>
+                  <el-menu-item index="5-2" @click="ShowOrder">所有订单</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="6">
@@ -98,7 +90,7 @@
                     {{scope.row.phone}}
                   </template>
                 </el-table-column>
-                <el-table-column label="客户名称">
+                <el-table-column label="公司名称">
                   <template slot-scope="scope">
                     {{scope.row.companyName}}
                   </template>
@@ -140,8 +132,8 @@
               <el-form-item label="联系方式" prop="phone">
                 <el-input type="text" v-model="addForm.phone" placeholder="请输入手机号"></el-input>
               </el-form-item>
-              <el-form-item label="客户名称" prop="companyName">
-                <el-input type="text" v-model="addForm.companyName" placeholder="请输入客户名称"></el-input>
+              <el-form-item label="公司名称" prop="companyName">
+                <el-input type="text" v-model="addForm.companyName" placeholder="请输入公司名称"></el-input>
               </el-form-item>
               <el-form-item label="出勤成果" prop="gain">
                 <el-input type="text" v-model="addForm.gain" placeholder="请输入出勤成果"></el-input>
@@ -227,7 +219,7 @@
             { required: true,message: '请输入正确的手机号', trigger: 'blur', validator: validPhone }//这里需要用到全局变量
           ],
           companyName: [
-            { required: true, message: '请输入客户名称', trigger: 'blur' },
+            { required: true, message: '请输入公司名称', trigger: 'blur' },
           ],
           gain: [
             { required: true, message: '请选择出勤成果', trigger: 'blur' },
@@ -242,6 +234,46 @@
           || this.name === "陈红喜" || this.name === "裴化民" || this.name === "吕妙玲"){
           this.$router.push({
             path:"/product"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+       ShowInput:function(){
+        if(this.name === "李有山"  || this.name === "牛红珍" || this.name === "李国正"
+        || this.name === "吕妙玲" || this.name === "庾未宗"){
+          this.$router.push({
+            path:"/input"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowOut:function(){
+        if(this.name === "李有山"  || this.name === "牛红珍" || this.name === "李国正"
+        || this.name === "吕妙玲" || this.name === "庾未宗"){
+          this.$router.push({
+            path:"/output"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowAddOrder:function(){
+        if(this.name === "李有山"  || this.name === "牛红珍" || this.name === "李国正"
+        || this.name === "吕妙玲"){
+          this.$router.push({
+            path:"/addOrder"
+          })
+        }else{
+          alert('不好意思。您无权查看当前页面')
+        }
+      },
+      ShowOrder:function(){
+        if(this.name === "李有山"  || this.name === "牛红珍" || this.name === "李国正"
+        || this.name === "吕妙玲"){
+          this.$router.push({
+            path:"/order"
           })
         }else{
           alert('不好意思。您无权查看当前页面')
