@@ -72,8 +72,8 @@
         </el-header>
           <el-main>
               <el-form>
-                <el-form-item label="订单编号">
-                  <el-input ref="content" v-model="search" placeholder="请输入订单编号" style="width: 300px;"></el-input>
+                <el-form-item label="客户名称">
+                  <el-input ref="content" v-model="search" placeholder="请输入客户名称" style="width: 300px;"></el-input>
                 </el-form-item>
               </el-form>
             <div>
@@ -245,7 +245,7 @@
         }
         search = search.trim().toLowerCase();
         orderList_array =orderList_array.filter(function(item){
-          if(item.orderId.toLowerCase().indexOf(search) !== -1){
+          if(item.companyName.toLowerCase().indexOf(search) !== -1){
             return item;
           }
         })
