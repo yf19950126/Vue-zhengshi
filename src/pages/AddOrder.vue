@@ -157,7 +157,7 @@
         },
         rules2: {
           orderId: [
-            { required: true, message: '请输入订单编号', trigger: 'blur' },
+            {message: '请输入订单编号'},
           ],
           date:[
             {type:'date',required:true,message:'请填写时间',trigger:'blur'}
