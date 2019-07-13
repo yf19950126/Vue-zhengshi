@@ -198,7 +198,7 @@
             { message: '请输入电机配件', trigger: 'blur' },
           ],
           motorAddress: [
-            { required: true, message: '请输入供货单位', trigger: 'blur' },
+            { message: '请输入供货单位', trigger: 'blur' },
           ],
           motorWork: [
             {message: '请输入工具及材料', trigger: 'blur' },
