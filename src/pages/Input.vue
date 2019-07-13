@@ -129,11 +129,11 @@
               <el-form-item label="电机配件" prop="motorName">
                 <el-input v-model="addForm.motorName" placeholder="请输入电机配件"></el-input>
               </el-form-item>
+              <el-form-item label="工具及材料" prop="motorWork">
+                <el-input  v-model="addForm.motorWork" autocomplete="off" placeholder="请输入工具材料"></el-input>
+              </el-form-item>
               <el-form-item label="供货单位" prop="motorAddress">
                 <el-input v-model="addForm.motorAddress" placeholder="请输入供货单位"></el-input>
-              </el-form-item>
-              <el-form-item label="工具材料" prop="motorWork">
-                <el-input  v-model="addForm.motorWork" autocomplete="off" placeholder="请输入工具材料"></el-input>
               </el-form-item>
               <el-form-item label="单价" prop="motorMoney" >
                 <el-input  v-model="addForm.motorMoney" autocomplete="off" placeholder="请输入电机单价"></el-input>
