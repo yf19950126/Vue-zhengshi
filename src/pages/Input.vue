@@ -123,6 +123,13 @@
           </el-row>
           <el-dialog title="添加入库配件" :visible.sync="addDialog" @close="resetForm('addForm')">
             <el-form :model="addForm" :rules="rules2" ref="addForm" label-width="80px">
+            <el-form-item label="进货日期" prop="date">
+                  <el-date-picker style="width: 100%;"
+                                  v-model="addForm.date"
+                                  type="datetime"
+                                  placeholder="选择日期时间">
+                  </el-date-picker>
+              </el-form-item>
               <el-form-item label="进货人员" prop="people">
                 <el-input v-model="addForm.people" placeholder="请输入进货人员"></el-input>
               </el-form-item>
@@ -181,6 +188,7 @@
         machineList:[],
         total:0,
         addForm: {
+          date:'',
           people:'',
           motorName:'',
           motorAddress:'',
@@ -190,6 +198,9 @@
         },
         addDialog:false,
         rules2: {
+          date:[
+              {type:'date',required:true,message:'请填写时间',trigger:'blur'}
+          ],
           people: [
             { required: true, message: '请输入真实姓名', trigger: 'blur' },
             { min: 2, max: 4, message: '长度在 2 到 4 个字符', trigger: 'blur' }
