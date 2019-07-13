@@ -169,6 +169,7 @@ router.get('/businessList',function (req,res,next) {
 ///入库电机配件
 router.post('/addMachine',function(req,res,next){
   var newMachine = new Machine();
+  newMachine.date = req.body.date;
   newMachine.people = req.body.people;
   newMachine.motorName = req.body.motorName;
   newMachine.motorAddress = req.body.motorAddress;
