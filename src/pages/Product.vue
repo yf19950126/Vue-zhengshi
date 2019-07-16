@@ -198,7 +198,6 @@
           ],
           username: [
             { required: true, message: '请输入真实姓名', trigger: 'blur' },
-            { min: 2, max: 4, message: '长度在 2 到 4 个字符', trigger: 'blur' }
           ],
           phone: [
             {message: '请输入正确的手机号'}//这里需要用到全局变量
