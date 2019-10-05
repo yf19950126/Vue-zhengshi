@@ -1,6 +1,6 @@
 //连接MongoDB数据库
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://admin:admin123456@localhost:27018/Zhengshi');
+mongoose.connect('mongodb://yangfan:yangfan123456@localhost:27018/SXZS');
 
 mongoose.connection.on("connected", function () {
   console.log("MongoDB connected success.")
